@@ -51,3 +51,15 @@ response = requests.get(
 json_response = response.json()
 repository = json_response['items'][0]
 print(f'Text matches: {repository["text_matches"]}')
+
+
+##### Timeour example
+import requests
+from requests.exceptions import Timeout
+
+try:
+    response = requests.get('https://api.github.com', timeout=1)
+except Timeout:
+    print('The request timed out')
+else:
+    print('The request did not time out')
